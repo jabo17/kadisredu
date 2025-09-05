@@ -1,0 +1,26 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 3,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "Release",
+      "displayName": "Default Configuration for the RELEASE build",
+      "description": "Adjust paths to gcc, g++ and Intel MPI",
+      "generator": "Unix Makefiles",   
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+	"KAMINPAR_64BIT_EDGE_IDS": "ON",
+	"KAMINPAR_64BIT_IDS": "OFF",
+	"KAMINPAR_64BIT_LOCAL_WEIGHTS": "ON",
+	"KAMINPAR_64BIT_NODE_IDS": "OFF",
+	"KAMINPAR_64BIT_WEIGHTS": "ON"
+      }
+    }
+  ]
+}
+

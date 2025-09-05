@@ -1,0 +1,21 @@
+function (kadisredu_add_executable target)
+    add_executable(${target} ${ARGN})
+    target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(${target} PRIVATE KaDisRedu::KaDisRedu)
+    target_link_libraries(${target} PRIVATE CLI11::CLI11)
+    target_link_libraries(${target} PRIVATE tomlplusplus::tomlplusplus)
+    #target_link_libraries(${target} PUBLIC argtable3::argtable3)
+    target_link_libraries(${target} PRIVATE nlohmann_json::nlohmann_json)
+    target_link_libraries(${target} PRIVATE KaMinPar::dKaMinPar)
+    target_link_libraries(${target} PRIVATE kamping KaGen::KaGen)
+    target_link_libraries(${target} PRIVATE message-queue::message-queue)
+    target_link_libraries(${target} PRIVATE kamis::wmis)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        target_compile_options(${target} PRIVATE -g -O0)
+    endif ()
+
+    message(STATUS "Enabled KaDisRedu executable ${target}")
+endfunction ()
+
+# executables
+kadisredu_add_executable(kadisredu_app kadisredu.cpp cli.cpp cli.h)

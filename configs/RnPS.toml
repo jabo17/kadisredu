@@ -1,0 +1,21 @@
+# test_config_cli.toml
+
+# first reduce phase
+[[reduce_phase]]
+style = "reduce-and-peel"
+type = "sync"
+max_allowed_subproblem_size = 10 # vertices
+# async only:
+message_queue_local_threshold = 1000 # Bytes
+[reduce_phase.initial_partitioning]
+disable_partitioning = true
+
+# greedy solver
+[greedy]
+algo = "sync"
+message_queue_local_threshold = 1000
+[greedy.initial_partitioning]
+disable_partitioning = true
+
+
+

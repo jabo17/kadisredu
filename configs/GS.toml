@@ -1,0 +1,9 @@
+# test_config_cli.toml
+
+# greedy solver
+[greedy]
+algo = "sync"
+[greedy.initial_partitioning]
+disable_partitioning = true
+
+
