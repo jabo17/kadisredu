@@ -9,7 +9,7 @@
 	url = https://github.com/nlohmann/json.git
 [submodule "extern/KaMIS"]
 	path = extern/KaMIS
-	url = https://github.com/jabo17/KaMIS.git
+	url = https://github.com/karlsruheMIS/KaMIS
 [submodule "extern/KaGen"]
 	path = extern/KaGen
 	url = https://github.com/KarlsruheGraphGeneration/KaGen.git
