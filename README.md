@@ -2,6 +2,8 @@
 
 This project is joint work between Jannick Borowitz[^1], Ernestine Großmann[^2], and Matthias Schimek[^3].
 
+[![DOI](https://zenodo.org/badge/807071373.svg)](https://doi.org/10.5281/zenodo.17174407)
+
 ---
 
 In the following, we describe the necessary steps to build and use our algorithms.
