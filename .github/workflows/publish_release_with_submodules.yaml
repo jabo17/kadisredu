@@ -4,6 +4,10 @@ on:
   release:
     types: [published]
 
+permissions:
+      contents: write
+      packages: read
+
 jobs:
   bundle-and-attach:
     runs-on: ubuntu-latest
@@ -12,9 +16,9 @@ jobs:
       contents: write
       packages: read
 
-
     container:
       image: ghcr.io/jabo17/kadisredu-reproducibility:main
+      options: --user 0:0
 
     steps:
       - name: Checkout (include submodules)
@@ -38,7 +42,7 @@ jobs:
       - name: Create vendored tarball
         run: |
           RELEASE_NAME="${{ github.event.repository.name }}-${{ github.ref_name }}-with-dep"
-          tar --exclude-vcs --exclude='.git' --exclude="$GITHUB_ENV" --exclude "{RELEASE_NAME}.tar.gz" -czf "../${RELEASE_NAME}.tar.gz" .
+          tar --exclude-vcs --exclude='.git' --exclude="$GITHUB_ENV" --exclude "${RELEASE_NAME}.tar.gz" -czf "../${RELEASE_NAME}.tar.gz" .
           echo "ARCHIVE_NAME=../${RELEASE_NAME}.tar.gz" >> $GITHUB_ENV
           
       - name: Attach vendored archive
