@@ -21,7 +21,7 @@ jobs:
       - name: Stage files (no VCS dirs)
         run: |
           rm -rf stage && mkdir stage
-          rsync -a --delete --exclude='.git' --exclude='**/.git' --exclude='.github' ./ stage/
+          rsync -a --delete --exclude='.git' --exclude='**/.git' --exclude='.github' --exclude='stage' ./ stage/
           echo "Submodule commit map:" > stage/SUBMODULES.txt
           git submodule status --recursive >> stage/SUBMODULES.txt
           [ -f .gitmodules ] && cat .gitmodules >> stage/SUBMODULES.txt
