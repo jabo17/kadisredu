@@ -20,6 +20,22 @@
 	"KAMINPAR_64BIT_NODE_IDS": "OFF",
 	"KAMINPAR_64BIT_WEIGHTS": "ON"
       }
+    },
+	{
+      "name": "OfflineRelease",
+      "displayName": "Default Configuration for the RELEASE build without internet connection.",
+      "description": "Adjust paths to gcc, g++ and Intel MPI. Requires FetchContent deps. to be present as well as git submodules",
+      "generator": "Unix Makefiles",   
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+	"KAMINPAR_64BIT_EDGE_IDS": "ON",
+	"KAMINPAR_64BIT_IDS": "OFF",
+	"KAMINPAR_64BIT_LOCAL_WEIGHTS": "ON",
+	"KAMINPAR_64BIT_NODE_IDS": "OFF",
+	"KAMINPAR_64BIT_WEIGHTS": "ON"
+	"KADISREDU_BUILD_OFFLINE": "ON"
+      }
     }
   ]
 }
