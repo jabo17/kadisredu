@@ -4,15 +4,18 @@ on:
   release:
     types: [published]
 
-permissions:
-  contents: write
-
-container:
-  image: ghcr.io/jabo17/kadisredu-reproducibility:main
-
 jobs:
   bundle-and-attach:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: read
+
+
+    container:
+      image: ghcr.io/jabo17/kadisredu-reproducibility:main
+
     steps:
       - name: Checkout (include submodules)
         uses: actions/checkout@v4
