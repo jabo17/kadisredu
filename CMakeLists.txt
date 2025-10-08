@@ -8,17 +8,17 @@ project(
         VERSION 0.0.1
 )
 
-option(KADISREDU_BUILD_OFFLINE OFF)
+option(KADISREDU_BUILD_OFFLINE "Build offline without fetching" OFF)
+
+include(CheckCXXCompilerFlag)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 set(FETCHCONTENT_BASE_DIR "${CMAKE_CURRENT_LIST_DIR}/_deps")
 if (KADISREDU_BUILD_OFFLINE)
   set(FETCHCONTENT_FULLY_DISCONNECTED TRUE)
 endif()
 include(FetchContent)
-
-include(CheckCXXCompilerFlag)
-
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+include(Dependencies)
 
 set(CMAKE_CXX_STANDARD 20)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -54,21 +54,9 @@ project(
 option(KADISREDU_BUILD_EXECUTABLES "build executables for KaDisRedu" ON)
 
 if (KADISREDU_BUILD_EXECUTABLES)
-    FetchContent_Declare(
-            CLI11
-            GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
-            GIT_TAG v2.3.2
-            SYSTEM
-    )
     FetchContent_MakeAvailable(CLI11)
     add_subdirectory(extern/json)
 
-
-    FetchContent_Declare(
-      tomlplusplus
-      GIT_REPOSITORY https://github.com/marzer/tomlplusplus.git
-      GIT_TAG        v3.4.0 # or latest
-    )
     FetchContent_MakeAvailable(tomlplusplus)
 endif()
 
@@ -102,24 +90,12 @@ add_subdirectory(extern/KaMinPar)
 
 # KaMPIng
 ################
-FetchContent_Declare(
-        kamping
-        GIT_REPOSITORY https://github.com/kamping-site/kamping.git
-        GIT_TAG e2c5e6e
-        SYSTEM
-)
 FetchContent_MakeAvailable(kamping)
 #add_subdirectory(extern/kamping)
 
 # malloc_count
 ################
 option(USE_MALLOC_COUNT "Use malloc count (override mallocs)" OFF)
-FetchContent_Declare(
-        malloc_count
-        GIT_REPOSITORY https://github.com/bingmann/malloc_count.git
-        GIT_TAG ddd0565
-        SYSTEM
-)
 if(USE_MALLOC_COUNT)
     FetchContent_MakeAvailable(malloc_count)
     FetchContent_GetProperties(malloc_count)
@@ -130,23 +106,11 @@ endif()
 
 # Abseil
 ################
-FetchContent_Declare(
-        absl
-        GIT_REPOSITORY https://github.com/abseil/abseil-cpp.git
-        GIT_TAG 4447c75
-        SYSTEM
-)
 set(ABSL_PROPAGATE_CXX_STD ON)
 FetchContent_MakeAvailable(absl)
 
 # String formatting
 ################
-FetchContent_Declare(
-        fmt
-        GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-        GIT_TAG 10.1.1
-        SYSTEM
-)
 FetchContent_MakeAvailable(fmt)
 
 # message-queue

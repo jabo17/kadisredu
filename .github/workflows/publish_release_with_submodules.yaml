@@ -7,6 +7,9 @@ on:
 permissions:
   contents: write
 
+container:
+  image: ghcr.io/jabo17/kadisredu-reproducibility:main
+
 jobs:
   bundle-and-attach:
     runs-on: ubuntu-latest
