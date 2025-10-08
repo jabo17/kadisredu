@@ -32,7 +32,7 @@ cmake --build build --target kadisredu_app --parallel
 KaDisRedu is also available at [Zenodo](https://doi.org/10.5281/zenodo.17174407) where all FetchContent dependencies and git submodules are prefetched.
 In this case you can build KaDisRedu as follows:
 ```bash
-cmake --preset=Release -S . -B build -DKADISREDU_BUILD_OFFLINE=TRUE
+cmake --preset=OfflineRelease -S . -B build
 cmake --build build --target kadisredu_app --parallel
 ```
 
