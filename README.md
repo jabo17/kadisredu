@@ -36,8 +36,6 @@ cmake --preset=Release -S . -B build -DKADISREDU_BUILD_OFFLINE=TRUE
 cmake --build build --target kadisredu_app --parallel
 ```
 
-## Build our algorithms (wit
-
 ## Run our algorithms
 
 ```bash
