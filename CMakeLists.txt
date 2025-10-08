@@ -8,8 +8,14 @@ project(
         VERSION 0.0.1
 )
 
+option(KADISREDU_BUILD_OFFLINE OFF)
 
+set(FETCHCONTENT_BASE_DIR "${CMAKE_CURRENT_LIST_DIR}/_deps")
+if (KADISREDU_BUILD_OFFLINE)
+  set(FETCHCONTENT_FULLY_DISCONNECTED TRUE)
+endif()
 include(FetchContent)
+
 include(CheckCXXCompilerFlag)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")

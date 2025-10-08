@@ -17,6 +17,12 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
+      - name: Prefetch FetchContent dependencies
+        run: |
+          cmake -S . -B build
+          rm -rf build
+          rm -rf _deps/*build
+
       - name: Show submodule SHAs (provenance)
         run: |
           echo "Submodule commit map:" > SUBMODULES.txt
@@ -25,7 +31,7 @@ jobs:
 
       - name: Create vendored tarball
         run: |
-          RELEASE_NAME="${{ github.event.repository.name }}-${{ github.ref_name }}-with-submodules"
+          RELEASE_NAME="${{ github.event.repository.name }}-${{ github.ref_name }}-with-dep"
           tar --exclude-vcs --exclude='.git' --exclude="$GITHUB_ENV" --exclude "{RELEASE_NAME}.tar.gz" -czf "../${RELEASE_NAME}.tar.gz" .
           echo "ARCHIVE_NAME=../${RELEASE_NAME}.tar.gz" >> $GITHUB_ENV
           
