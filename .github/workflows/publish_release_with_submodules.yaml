@@ -36,6 +36,7 @@ jobs:
       - name: Show submodule SHAs (provenance)
         run: |
           echo "Submodule commit map:" > SUBMODULES.txt
+          git config --global --add safe.directory $GITHUB_WORKSPACE
           git submodule status --recursive >> SUBMODULES.txt
           cat .gitmodules >> SUBMODULES.txt
 
