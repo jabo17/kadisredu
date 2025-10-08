@@ -1,0 +1,39 @@
+name: Vendored release (with submodules)
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  bundle-and-attach:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (include submodules)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Show submodule SHAs (provenance)
+        run: |
+          echo "Submodule commit map:" > SUBMODULES.txt
+          git submodule status --recursive >> SUBMODULES.txt
+          cat .gitmodules >> SUBMODULES.txt
+
+      - name: Create vendored tarball
+        run: |
+          RELEASE_NAME="${{ github.event.repository.name }}-${{ github.ref_name }}-with-submodules"
+          tar --exclude-vcs --exclude='.git' --exclude="$GITHUB_ENV" --exclude "{RELEASE_NAME}.tar.gz" -czf "../${RELEASE_NAME}.tar.gz" .
+          echo "ARCHIVE_NAME=../${RELEASE_NAME}.tar.gz" >> $GITHUB_ENV
+          
+      - name: Attach vendored archive
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ env.ARCHIVE_NAME }}
+            SUBMODULES.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
