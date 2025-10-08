@@ -19,13 +19,24 @@ We tested the following software stack to compile this code:
 - Google Sparse Hash (libsparsehash) (required by external libraries)
 
 ## Build our algorithms
-Note that you require an internet connection because some external libraries are downloaded from the internet via `FetchContent` (CMake).
+Note that you require an internet connection because some external libraries are downloaded from the internet via `FetchContent` (CMake) or are cloned as a git submodule.
 
 ```bash
-cd distributed-reductions
+cd kadisredu
+git submodule update --init --recursive
+# otherwise clone git submodule 
 cmake --preset=Release -S . -B build
 cmake --build build --target kadisredu_app --parallel 
 ```
+
+KaDisRedu is also available at [Zenodo](https://doi.org/10.5281/zenodo.17174407) where all FetchContent dependencies and git submodules are prefetched.
+In this case you can build KaDisRedu as follows:
+```bash
+cmake --preset=Release -S . -B build -DKADISREDU_BUILD_OFFLINE=TRUE
+cmake --build build --target kadisredu_app --parallel
+```
+
+## Build our algorithms (wit
 
 ## Run our algorithms
 
