@@ -1,0 +1,8 @@
+Submodule commit map:
+ cc8adc3f8ebde20e53ac78140293efce8e59b027 extern/KaGen (v1.1.0-56-gcc8adc3)
+ 6d22725504388864751603424060ab1eef1ab8a4 extern/KaGen/extlib/libmorton (v0.2.9)
+ 6f9771f2c014a703f151ac646d5f8074b6236c84 extern/KaGen/extlib/xxHash (v0.7.4-662-g6f9771f)
+ fa69ba41acd9839e405cc0d5cfe60c56f8c8d65f extern/KaMIS (v2.1-3-gfa69ba4)
+ 87ac9f90bb98be95ae21ddafd7932e609406e687 extern/KaMinPar (v3.5.1-5-g87ac9f90)
+ 960b763ecd144f156d05ec61f577b04107290137 extern/json (v3.11.2-98-g960b763ec)
+ 06ac2423e3e41a5a0fc2989baa24a563ef3e22cb extern/message-queue (v0.1.0)
