@@ -8,7 +8,7 @@ This project is joint work between Jannick Borowitz[^1], Ernestine Großmann[^2]
 
 In the following, we describe the necessary steps to build and use our algorithms.
 If you use our algorithms in an academic work, please acknowledge our work by citing the corresponding paper[^4].
-If you are particularly interested in reproducing artifacts in the corresponding paper [^4] of this repository, we refer you our [reproducibility repository](https://github.com/jabo17/kadisredu-reproducibility).
+If you are particularly interested in reproducing artifacts in the corresponding paper [^4] of this repository, we refer you to our [reproducibility repository](https://github.com/jabo17/kadisredu-reproducibility).
 
 ## Dependencies
 We tested the following software stack to compile this code:
